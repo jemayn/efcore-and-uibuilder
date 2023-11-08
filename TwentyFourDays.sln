@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwentyFourDays", "TwentyFourDays\TwentyFourDays.csproj", "{4DAAC481-301C-4B8E-B54C-E39103866C65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwentyFourDays.Persistence", "TwentyFourDays.Persistence\TwentyFourDays.Persistence.csproj", "{A29184B6-D463-4B59-8D5B-940051F6B036}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{4DAAC481-301C-4B8E-B54C-E39103866C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DAAC481-301C-4B8E-B54C-E39103866C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DAAC481-301C-4B8E-B54C-E39103866C65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A29184B6-D463-4B59-8D5B-940051F6B036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A29184B6-D463-4B59-8D5B-940051F6B036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A29184B6-D463-4B59-8D5B-940051F6B036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A29184B6-D463-4B59-8D5B-940051F6B036}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
