@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using TwentyFourDays.Persistence.DbContexts;
 using TwentyFourDays.Persistence.Migrations;
+using TwentyFourDays.Persistence.Repositories;
 using TwentyFourDays.Persistence.Services;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
@@ -22,5 +22,6 @@ public class Composer : IComposer
         builder.AddNotificationAsyncHandler<UmbracoApplicationStartedNotification, MovieMigration>();
         
         builder.Services.AddTransient<MoviesImportService>();
+        builder.Services.AddTransient<MovieRepository>();
     }
 }
