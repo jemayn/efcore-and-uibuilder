@@ -1,4 +1,5 @@
-﻿using TwentyFourDays.Persistence.DbContexts;
+﻿using System.Linq.Expressions;
+using TwentyFourDays.Persistence.DbContexts;
 using TwentyFourDays.Persistence.Models;
 using Umbraco.Cms.Persistence.EFCore.Scoping;
 
@@ -45,5 +46,41 @@ public class MovieRepository
         });
 
         scope.Complete();
+    }
+    
+    public async Task<IEnumerable<Movie>?> GetAll(
+        Expression<Func<Movie, bool>>? whereClause,
+        Expression<Func<Movie, object>>? orderBy,
+        bool ascending,
+        int? skip = null,
+        int? take = null)
+    {
+        using var scope = _scopeProvider.CreateScope();
+
+        var items = await scope.ExecuteWithContextAsync(async db =>
+        {
+            var movies = db.Movies.AsQueryable();
+
+            if (whereClause is not null)
+            {
+                movies = movies.Where(whereClause);
+            }
+            
+            if (orderBy is not null)
+            {
+                movies = ascending ? movies.OrderBy(orderBy) : movies.OrderByDescending(orderBy);
+            }
+
+            if (skip is not null && take is not null)
+            {
+                movies = movies.Skip(skip.Value).Take(take.Value);
+            }
+
+            return movies;
+        });
+
+        scope.Complete();
+
+        return items.ToList();
     }
 }
