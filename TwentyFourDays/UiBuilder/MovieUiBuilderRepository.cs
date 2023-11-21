@@ -23,17 +23,24 @@ public class MovieUiBuilderRepository : Repository<Movie, int>
 
     protected override Movie GetImpl(int id)
     {
-        throw new NotImplementedException();
+        return _movieRepository.GetById(id).GetAwaiter().GetResult();
     }
 
     protected override Movie SaveImpl(Movie entity)
     {
-        throw new NotImplementedException();
+        return _movieRepository.InsertOrUpdate(entity).GetAwaiter().GetResult();
     }
 
     protected override void DeleteImpl(int id)
     {
-        throw new NotImplementedException();
+        var movie = _movieRepository.GetById(id).GetAwaiter().GetResult();
+
+        if (movie is null)
+        {
+            return;
+        }
+        
+        _movieRepository.Delete(movie).GetAwaiter().GetResult();
     }
 
     protected override IEnumerable<Movie> GetAllImpl(
@@ -43,7 +50,7 @@ public class MovieUiBuilderRepository : Repository<Movie, int>
     {
         return _movieRepository.GetAll(whereClause, orderBy, orderByDirection == SortDirection.Ascending)
             .GetAwaiter()
-            .GetResult() ?? new List<Movie>();
+            .GetResult().Movies ?? new List<Movie>();
     }
 
     protected override PagedResult<Movie> GetPagedImpl(
@@ -53,7 +60,7 @@ public class MovieUiBuilderRepository : Repository<Movie, int>
         Expression<Func<Movie, object>> orderBy,
         SortDirection orderByDirection)
     {
-        var items = _movieRepository.GetAll(
+        var resultTuple = _movieRepository.GetAll(
                 whereClause, 
                 orderBy, 
                 orderByDirection == SortDirection.Ascending, 
@@ -62,14 +69,14 @@ public class MovieUiBuilderRepository : Repository<Movie, int>
             .GetAwaiter()
             .GetResult();
 
-        return new PagedResult<Movie>(items?.Count() ?? 0, pageNumber, pageSize)
+        return new PagedResult<Movie>(resultTuple.TotalResults, pageNumber, pageSize)
         {
-            Items = items
+            Items = resultTuple.Movies
         };
     }
 
     protected override long GetCountImpl(Expression<Func<Movie, bool>> whereClause)
     {
-        return _movieRepository.GetAll(whereClause, null, true).GetAwaiter().GetResult()?.Count() ?? 0;
+        return _movieRepository.GetAll(whereClause, null, true).GetAwaiter().GetResult().TotalResults;
     }
 }

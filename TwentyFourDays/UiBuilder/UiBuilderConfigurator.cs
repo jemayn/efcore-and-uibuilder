@@ -1,4 +1,5 @@
 ﻿using TwentyFourDays.Persistence.Models;
+using Umbraco.UIBuilder;
 using Umbraco.UIBuilder.Configuration;
 using Umbraco.UIBuilder.Configuration.Builders;
 
@@ -18,6 +19,26 @@ public class UiBuilderConfigurator : IConfigurator
                     "icon-movie",
                     "icon-movie",
                     collectionConfig => collectionConfig
-                        .SetRepositoryType<MovieUiBuilderRepository>())));
+                        .SetRepositoryType<MovieUiBuilderRepository>()
+
+                        .SetNameProperty(x => x.Name)
+
+                        .ListView(listViewConfig => listViewConfig
+                            .AddField(x => x.ReleaseYear)
+                            .AddField(x => x.MainActor)
+                            .SetPageSize(25))
+                        
+                        .Editor(editorConfig => editorConfig
+                            .AddTab("Content", tabConfig => tabConfig
+                                .AddFieldset("General", fieldsetConfig => fieldsetConfig
+                                    .AddField(x => x.ReleaseYear)
+                                    .AddField(x => x.MainActor)
+                                    .AddField(x => x.Genres)
+                                        .SetDataType("Movie Genre List Picker")
+                                        .SetValueMapper<MovieGenreValueMapper>())))
+                        
+                        .AddSearchableProperty(x => x.MainActor)
+                        .SetSortProperty(x =>x.ReleaseYear, SortDirection.Descending)
+                    )));
     }
 }

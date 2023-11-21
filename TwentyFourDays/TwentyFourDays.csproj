@@ -10,6 +10,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Our.Umbraco.Community.Contentment" Version="4.5.1" />
     <PackageReference Include="Umbraco.Cms" Version="12.3.1" />
     <PackageReference Include="Umbraco.UIBuilder" Version="12.0.1" />
   </ItemGroup>
@@ -27,6 +28,7 @@
   <ItemGroup>
     <None Include="umbraco\Data\chatgpt-25-christmas-movies.xlsx" />
   </ItemGroup>
+
 
 
   <PropertyGroup>
