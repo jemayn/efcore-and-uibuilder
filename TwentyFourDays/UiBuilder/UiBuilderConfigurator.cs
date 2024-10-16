@@ -1,7 +1,10 @@
 ﻿using TwentyFourDays.Persistence.Models;
+using TwentyFourDays.UiBuilder.Actions;
 using Umbraco.UIBuilder;
 using Umbraco.UIBuilder.Configuration;
+using Umbraco.UIBuilder.Configuration.Actions;
 using Umbraco.UIBuilder.Configuration.Builders;
+using Umbraco.UIBuilder.Infrastructure.Configuration.Actions;
 
 namespace TwentyFourDays.UiBuilder;
 
@@ -39,6 +42,11 @@ public class UiBuilderConfigurator : IConfigurator
                         
                         .AddSearchableProperty(x => x.MainActor)
                         .SetSortProperty(x =>x.ReleaseYear, SortDirection.Descending)
+
+                        .AddAction<MovieExportAction>(actionConfig => actionConfig
+                            .SetVisibility(x => x.ActionType == ActionType.ContainerMenu))
+                        .AddAction<MovieImportAction>(actionConfig => actionConfig
+                            .SetVisibility(x => x.ActionType == ActionType.ContainerMenu))
                     )));
     }
 }

@@ -15,5 +15,11 @@
   <area alias="actions">
     <key alias="delete" autogen="true">Delete</key>
     <key alias="save-and-delete" autogen="true">Save &amp; Delete</key>
+    <key alias="export" autogen="true">Export</key>
+    <key alias="import" autogen="true">Import</key>
+    <key alias="exportMovies" autogen="true">Export Movies</key>
+    <key alias="save-and-exportMovies" autogen="true">Save &amp; Export Movies</key>
+    <key alias="importMovies" autogen="true">Import Movies</key>
+    <key alias="save-and-importMovies" autogen="true">Save &amp; Import Movies</key>
   </area>
 </language>

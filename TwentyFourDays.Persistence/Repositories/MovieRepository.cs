@@ -142,7 +142,7 @@ public class MovieRepository
 
         var items = await scope.ExecuteWithContextAsync(async db =>
         {
-            var movies = db.Movies.AsQueryable();
+            var movies = db.Movies.Include(x => x.Genres).AsQueryable();
 
             if (whereClause is not null)
             {
