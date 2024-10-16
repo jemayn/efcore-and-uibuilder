@@ -29,6 +29,10 @@
     <None Include="umbraco\Data\chatgpt-25-christmas-movies.xlsx" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\media\" />
+  </ItemGroup>
+
 
 
   <PropertyGroup>
