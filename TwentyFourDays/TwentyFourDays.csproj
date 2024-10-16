@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -10,9 +10,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Our.Umbraco.Community.Contentment" Version="4.5.1" />
-    <PackageReference Include="Umbraco.Cms" Version="12.3.1" />
-    <PackageReference Include="Umbraco.UIBuilder" Version="12.0.1" />
+    <PackageReference Include="Our.Umbraco.Community.Contentment" Version="4.7.0" />
+    <PackageReference Include="Umbraco.Cms" Version="13.5.1" />
+    <PackageReference Include="Umbraco.UIBuilder" Version="13.1.5" />
+    <PackageReference Include="uSync" Version="13.2.5" />
   </ItemGroup>
 
   <ItemGroup>

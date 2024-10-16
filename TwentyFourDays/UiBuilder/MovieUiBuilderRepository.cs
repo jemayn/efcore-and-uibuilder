@@ -26,9 +26,19 @@ public class MovieUiBuilderRepository : Repository<Movie, int>
         return _movieRepository.GetById(id).GetAwaiter().GetResult();
     }
 
+    protected override IEnumerable<TJunctionEntity> GetRelationsByParentIdImpl<TJunctionEntity>(int parentId, string relationAlias)
+    {
+        throw new NotImplementedException();
+    }
+
     protected override Movie SaveImpl(Movie entity)
     {
         return _movieRepository.InsertOrUpdate(entity).GetAwaiter().GetResult();
+    }
+
+    protected override TJunctionEntity SaveRelationImpl<TJunctionEntity>(TJunctionEntity entity)
+    {
+        throw new NotImplementedException();
     }
 
     protected override void DeleteImpl(int id)

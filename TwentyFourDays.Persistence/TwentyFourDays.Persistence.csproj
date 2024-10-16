@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -9,7 +9,7 @@
 
     <ItemGroup>
       <PackageReference Include="EPPlus" Version="4.5.3.3" />
-      <PackageReference Include="Umbraco.Cms.Persistence.EFCore" Version="12.3.1" />
+      <PackageReference Include="Umbraco.Cms.Persistence.EFCore" Version="13.5.1" />
     </ItemGroup>
 
 

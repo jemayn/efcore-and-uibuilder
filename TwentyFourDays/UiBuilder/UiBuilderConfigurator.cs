@@ -26,7 +26,7 @@ public class UiBuilderConfigurator : IConfigurator
                         .ListView(listViewConfig => listViewConfig
                             .AddField(x => x.ReleaseYear)
                             .AddField(x => x.MainActor)
-                            .SetPageSize(25))
+                            .SetPageSize(10))
                         
                         .Editor(editorConfig => editorConfig
                             .AddTab("Content", tabConfig => tabConfig
@@ -34,7 +34,7 @@ public class UiBuilderConfigurator : IConfigurator
                                     .AddField(x => x.ReleaseYear)
                                     .AddField(x => x.MainActor)
                                     .AddField(x => x.Genres)
-                                        .SetDataType("Movie Genre List Picker")
+                                        .SetDataType(new Guid("450133fc-56f6-4e6f-9982-516a76fffa01"))
                                         .SetValueMapper<MovieGenreValueMapper>())))
                         
                         .AddSearchableProperty(x => x.MainActor)

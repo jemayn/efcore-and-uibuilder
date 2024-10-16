@@ -10,7 +10,7 @@
 
         <umb-editor-container>
 
-            <div class="umb-control-group">
+            <div class="umb-control-group" ng-if="vm.hideSearch === false">
                 <div class="form-search">
                     <umb-search-filter input-id="contentment-datapicker-search"
                                        model="vm.searchOptions.query"
